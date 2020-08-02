@@ -27,7 +27,7 @@ from sklearn.model_selection import train_test_split
 
    
 def load_data(input_directory):
-# recoed location of data
+# record location of data
     data = []
 
     for folder in os.listdir(input_directory):
@@ -186,7 +186,6 @@ if __name__ == '__main__':
     np.save('data4.npy',train_data4)
     np.save('data5.npy',train_data5)
     del data1,data2,train_data,train_data1,train_data2,train_data3,train_data4,train_data5
-    # to record epoch number of the best validation model
     for i in range(1,6):
         train_data= np.array([])
         val_data = []
@@ -211,7 +210,7 @@ if __name__ == '__main__':
         main_input = Input(shape=(1000,2), dtype='float32', name='main_input')
         # add residul network
         x = add_resnet_layers(main_input)
-        # add Bi-GRU modeule
+        # add Bi-GRU module
         x = Bidirectional(CuDNNGRU(32,return_sequences=False,return_state=False))(x)
         x = BatchNormalization()(x)
         x = LeakyReLU(alpha=0.3)(x)
@@ -253,7 +252,7 @@ if __name__ == '__main__':
                 print("Test loss:",np.mean(loss))#/len(val))
                 val_loss.append(np.mean(loss))
                 val_mae.append(np.mean(mae))
-                # save the best validation model with smallest 
+                # save the best validation model with smallest loss
                 if val_loss[-1]==min(val_loss):
                     model_name = 'smallest_mse_model'
                     model.save_weights(os.path.join(filepath,model_name))
