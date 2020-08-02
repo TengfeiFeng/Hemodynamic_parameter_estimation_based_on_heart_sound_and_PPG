@@ -34,7 +34,7 @@ def load_data(input_directory):
     return data 
 
 def load_data_1(input_directory):
-# load data for subject 1 
+# load data location for subject 1 
     '''
     input_directory: the location for records of subject 1
     '''
@@ -48,7 +48,7 @@ def load_data_1(input_directory):
     return data   
  
 def load_data_2(input_directory):
-# load data for subject 2
+# load data location for subject 2
     '''
     input_directory: the location for records of subject 2
     '''
@@ -107,7 +107,7 @@ def resnet_block(
         block_index,
         **params):
     # the code of building resnet block was reference to availabel code used in A. Y. Hannun et al., 
-    #Cardiologist-level arrhythmia detection and classification in ambulatory electrocardiograms 
+    # Cardiologist-level arrhythmia detection and classification in ambulatory electrocardiograms 
     #using a deep neural network, Nat. Med., vol. 25, no. 1, pp. 65-69, Jan. 2019.
     from keras.layers import Add 
     from keras.layers import MaxPooling1D
@@ -239,7 +239,7 @@ if __name__ == '__main__':
         main_input = Input(shape=(1000,2), dtype='float32', name='main_input')
         # add residul network
         x = add_resnet_layers(main_input)
-        # add Bi-GRU modeule
+        # add Bi-GRU module
         x = Bidirectional(CuDNNGRU(32,return_sequences=False,return_state=False))(x)
         x = BatchNormalization()(x)
         x = LeakyReLU(alpha=0.3)(x)
@@ -281,7 +281,7 @@ if __name__ == '__main__':
                 print("Test loss:",np.mean(loss))#/len(val))
                 val_loss.append(np.mean(loss))
                 val_mae.append(np.mean(mae))
-                # save the best validation model with smallest 
+                # save the best validation model with smallest loss
                 if val_loss[-1]==min(val_loss):
                     model_name = 'smallest_mse_model'
                     model.save_weights(os.path.join(filepath,model_name))
