@@ -1,6 +1,6 @@
 # Hemodynamic_parameter_estimation_based_on_PCG_and_PPG
 Here are the codes and data used in the paper: 
-"Beat-by-beat Estimation of Left Ventricular Hemodynamic Parameters Based on PCG and PPG Using Deep Learning Model"
+"Continuous Estimation of Left Ventricular Hemodynamic Parameters Based on Heart Sound and PPG Signals Using Deep Neural Network"
 
 The folder named 'data' contains the preprocessed data for two subjects:
 For subject 1, 15 records have been  collected.
@@ -16,7 +16,6 @@ The 'label' contains the values of the four  target parameters.
 There are three scripts:
 1.train_model_for_scheme0.py,
 2.train_model_for_scheme_I.py,
-3.train_model_for_scheme_II.py,
 which are the realization of the corresponding validation schemes introduced in our paper.
 
 
